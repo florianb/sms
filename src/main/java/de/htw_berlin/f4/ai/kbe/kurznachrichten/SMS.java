@@ -19,7 +19,7 @@ public class SMS
    * @param message Der Text der zu erzeugenden Nachricht.
    * @return Die Id der neuen Nachricht
    */  
-  Long createMessage(String userName, String message, String topic)
+  public Long createMessage(String userName, String message, String topic)
   {
     
   }
@@ -40,7 +40,7 @@ public class SMS
    * @param predecessor Die Id der Vorgänger-Nachricht.
    * @return Die Id der neuen Nachricht
    */
-  Long respondToMessage(String userName, String message, Long predecessor)
+  public Long respondToMessage(String userName, String message, Long predecessor)
   {
     
   }
@@ -59,7 +59,7 @@ public class SMS
    * @param userName Der Name des Nutzers
    * @param messageId Die Id der Nachricht.
    */
-  void deleteMessage(String userName, Long messageId)
+  public void deleteMessage(String userName, Long messageId)
     throws AuthorizationException
   {
     
@@ -76,7 +76,7 @@ public class SMS
    * @param userName Der Name des Nutzers
    * @param topic Der eindeutige Bezeichner des Topics
    */
-  void createTopic(String userName, String topic)
+  public void createTopic(String userName, String topic)
   {
     
   }
@@ -88,7 +88,7 @@ public class SMS
    * @return alle Bezeichner der Topics. Wenn es keine Topics gibt, soll eine leere Menge 
    * zurückgegeben werden (nicht null).
    */
-  Set<String> getTopics()
+  public Set<String> getTopics()
   {
     
   }
@@ -108,7 +108,7 @@ public class SMS
    * Die äußere Liste ist geordnet nach dem Erstellungdatum der Ursprungsnachrichten. Wenn es keine Messages gibt, 
    * soll eine leere äußere Liste zurückgegeben werden (nicht null). Die inneren Listen dürfen nie leer sein.
    */
-  List<List<Message>> getMessageByTopic(String topic, Date since)
+  public List<List<Message>> getMessageByTopic(String topic, Date since)
   {
     
   }
@@ -123,7 +123,7 @@ public class SMS
    * @param userName Der eindeutige Names des Nutzers
    * @param city Die Stadt aus dem der Nutzer kommt.
    */
-  void createUser(String userName, String city)
+  public void createUser(String userName, String city)
   {
     
   }
@@ -134,7 +134,7 @@ public class SMS
    * @throws IllegalArgumentException, wenn der Nutzer nicht existiert.
    * @param userName
    */
-  void deleteUser(String userName)
+  public void deleteUser(String userName)
   {
     
   }
@@ -145,7 +145,7 @@ public class SMS
    * 
    * @return Menge aller Nutzer
    */
-  Set<User> getUsers()
+  public Set<User> getUsers()
   {
     
   }
