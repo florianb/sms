@@ -5,8 +5,15 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 @RunWith(JUnit4.class)
-public class SMSTest
+public class SMSGetUsers
 {
+  /**
+   * Gibt alle Nutzer zurück.
+   * 
+   * @return Menge aller Nutzer
+   */
+  //public Set<User> getUsers()
+  
   @Test
   thisIsAlwaysTrue()
   {
