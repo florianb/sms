@@ -1,11 +1,8 @@
 package de.htw_berlin.f4.ai.kbe.kurznachrichten;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import org.junit.*;
 
-public class SMS
-  implements ShortMessageService
+public class SMSTest
 {
   /**
    * Erzeuge eine neue Ursprungsnachricht. Eine Nachricht ist einem Topic zugeordnet.
@@ -19,11 +16,8 @@ public class SMS
    * @param message Der Text der zu erzeugenden Nachricht.
    * @return Die Id der neuen Nachricht
    */  
-  public Long createMessage(String userName, String message, String topic)
-  {
-    return null;
-  }
-  
+  //public Long createMessage(String userName, String message, String topic)
+      
   /**
    * Eine Nachricht als Antwort auf eine existierende Ursprungs-Nachricht. 
    * Die Nachricht ist automatisch dem Topic des Vorgängers zugeordnet.
@@ -40,10 +34,8 @@ public class SMS
    * @param predecessor Die Id der Vorgänger-Nachricht.
    * @return Die Id der neuen Nachricht
    */
-  public Long respondToMessage(String userName, String message, Long predecessor)
-  {
-    return null;
-  }
+  //public Long respondToMessage(String userName, String message, Long predecessor)
+
   
 
   /**
@@ -59,11 +51,9 @@ public class SMS
    * @param userName Der Name des Nutzers
    * @param messageId Die Id der Nachricht.
    */
-  public void deleteMessage(String userName, Long messageId)
-    throws AuthorizationException
-  {
-    
-  }
+  //public void deleteMessage(String userName, Long messageId)
+    //throws AuthorizationException
+
 
   
   /**
@@ -76,10 +66,8 @@ public class SMS
    * @param userName Der Name des Nutzers
    * @param topic Der eindeutige Bezeichner des Topics
    */
-  public void createTopic(String userName, String topic)
-  {
-    
-  }
+  //public void createTopic(String userName, String topic)
+
   
 
   
@@ -88,10 +76,8 @@ public class SMS
    * @return alle Bezeichner der Topics. Wenn es keine Topics gibt, soll eine leere Menge 
    * zurückgegeben werden (nicht null).
    */
-  public Set<String> getTopics()
-  {
-    return null;
-  }
+  //public Set<String> getTopics()
+
   
   
   /**
@@ -108,10 +94,8 @@ public class SMS
    * Die äußere Liste ist geordnet nach dem Erstellungdatum der Ursprungsnachrichten. Wenn es keine Messages gibt, 
    * soll eine leere äußere Liste zurückgegeben werden (nicht null). Die inneren Listen dürfen nie leer sein.
    */
-  public List<List<Message>> getMessageByTopic(String topic, Date since)
-  {
-    return null;
-  }
+  //public List<List<Message>> getMessageByTopic(String topic, Date since)
+
   
   
   /**
@@ -123,10 +107,8 @@ public class SMS
    * @param userName Der eindeutige Names des Nutzers
    * @param city Die Stadt aus dem der Nutzer kommt.
    */
-  public void createUser(String userName, String city)
-  {
-    
-  }
+  //public void createUser(String userName, String city)
+
   
   
   /**
@@ -134,10 +116,8 @@ public class SMS
    * @throws IllegalArgumentException, wenn der Nutzer nicht existiert.
    * @param userName
    */
-  public void deleteUser(String userName)
-  {
-    
-  }
+  //public void deleteUser(String userName)
+
   
   
   /**
@@ -145,8 +125,6 @@ public class SMS
    * 
    * @return Menge aller Nutzer
    */
-  public Set<User> getUsers()
-  {
-    return null;
-  }
+  //public Set<User> getUsers()
+
 }
