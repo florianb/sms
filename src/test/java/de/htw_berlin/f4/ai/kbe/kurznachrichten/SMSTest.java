@@ -1,9 +1,13 @@
 package de.htw_berlin.f4.ai.kbe.kurznachrichten;
 
+import org.junit.rules.ExpectedException;
 import org.junit.*;
 
 public class SMSTest
 {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+      
   /**
    * Erzeuge eine neue Ursprungsnachricht. Eine Nachricht ist einem Topic zugeordnet.
    * Erstelle ein Anlegedatum zu der Nachricht. 
@@ -17,10 +21,30 @@ public class SMSTest
    * @return Die Id der neuen Nachricht
    */  
   //public Long createMessage(String userName, String message, String topic)
+  @Test
   public void testCreateOneMessage() {
     
   }
   
+  @Test
+  public void testCreateMessageWithMoreThan255Chars() {
+    thrown.expect(IllegalArgumentException.class);
+  }
+  
+  @Test
+  public void testCreateMessageWithLessThan10Chars() {
+    thrown.expect(IllegalArgumentException.class);
+  }
+  
+  @Test
+  public void testCreateMessageWithoutUser() {
+    thrown.expect(IllegalArgumentException.class);
+  }
+  
+  @Test
+  public void testCreateMessageWithoutTopic() {
+    thrown.expect(IllegalArgumentException.class);
+  }
   
   /**
    * Eine Nachricht als Antwort auf eine existierende Ursprungs-Nachricht. 
@@ -39,9 +63,42 @@ public class SMSTest
    * @return Die Id der neuen Nachricht
    */
   //public Long respondToMessage(String userName, String message, Long predecessor)
-
   
-
+  @Test
+  public void testRespondToMessage() {
+    
+  }
+  
+  @Test
+  public void testRespondMessageWithMoreThan255Chars() {
+    
+  }
+  
+  @Test
+  public void testRespondMessageWithLessThan10Chars() {
+    
+  }
+  
+  @Test
+  public void testRespondWithoutPredecessor() {
+    
+  }
+  
+  @Test
+  public void testRespondInvalidPredecessor() {
+    
+  }
+  
+  @Test
+  public void testRespondWithParameterContainingNull() {
+    
+  }
+  
+  @Test
+  public void testRespondWithoutUser() {
+    
+  }
+  
   /**
    * Lösche eine Ursprungsnachricht, d.h. eine Nachricht ohne Vorgänger.
    * Alle Nachfolger, d.h. Antwort-Nachrichten müssen dabei mitgelöscht werden.
@@ -57,7 +114,35 @@ public class SMSTest
    */
   //public void deleteMessage(String userName, Long messageId)
     //throws AuthorizationException
-
+    @Test
+    public void testDeleteMessage() {
+    
+    }
+    
+    @Test
+    public void testDeleteMessageWithInvalidID() {
+    
+    }
+    
+    @Test
+    public void testDeleteMessageWithInvalidUser() {
+    
+    }
+    
+    @Test
+    public void testDeleteMessageWithParameterContainingNull() {
+    
+    }
+    
+    @Test
+    public void testDeleteMessageWithUnauthorizedUser() {
+    
+    }
+    
+    @Test
+    public void testDeleteMessageWithInvalidMessage() {
+    
+    }
 
   
   /**
@@ -71,7 +156,35 @@ public class SMSTest
    * @param topic Der eindeutige Bezeichner des Topics
    */
   //public void createTopic(String userName, String topic)
-
+  @Test
+  public void testCreateTopic() {
+    
+  }
+  
+  @Test
+  public void testCreateTopicWithInvalidUser() {
+    
+  }
+  
+  @Test
+  public void testCreateDuplicativeTopic() {
+    
+  }
+  
+  @Test
+  public void testCreateTopicWithMoreThan70Chars() {
+    
+  }
+  
+  @Test
+  public void testCreateTopicWithLessThan2Chars() {
+    
+  }
+  
+  @Test
+  public void testCreateTopicWithParameterContainingNull() {
+    
+  }
   
 
   
@@ -81,7 +194,10 @@ public class SMSTest
    * zurückgegeben werden (nicht null).
    */
   //public Set<String> getTopics()
-
+  @Test
+  public void testGetTopics() {
+    
+  }
   
   
   /**
@@ -99,7 +215,20 @@ public class SMSTest
    * soll eine leere äußere Liste zurückgegeben werden (nicht null). Die inneren Listen dürfen nie leer sein.
    */
   //public List<List<Message>> getMessageByTopic(String topic, Date since)
-
+  @Test
+  public void testGetMessageByTopic() {
+    
+  }
+  
+  @Test
+  public void testGetMessageByInvalidTopic() {
+    
+  }
+  
+  @Test
+  public void testGetMessageByNullTopic() {
+    
+  }
   
   
   /**
@@ -112,7 +241,30 @@ public class SMSTest
    * @param city Die Stadt aus dem der Nutzer kommt.
    */
   //public void createUser(String userName, String city)
+  @Test
+  public void testCreateUser() {
+    
+  }
+  
+  @Test
+  public void testCreateDuplicativeUser() {
+    
+  }
+  
+  @Test
+  public void testCreateUserByNameWithMoreThan30Chars() {
+    
+  }
+  
+  @Test
+  public void testCreateUserByNameWithLessThan4Chars() {
+    
+  }
 
+  @Test
+  public void testCreateUserWithParameterContainingNull() {
+    
+  }
   
   
   /**
@@ -121,7 +273,16 @@ public class SMSTest
    * @param userName
    */
   //public void deleteUser(String userName)
-
+  
+  @Test
+  public void testDeleteUser() {
+    
+  }
+  
+  @Test
+  public void testDeleteInvalidUser() {
+    
+  }
   
   
   /**
@@ -130,5 +291,8 @@ public class SMSTest
    * @return Menge aller Nutzer
    */
   //public Set<User> getUsers()
-
+  @Test
+  public void testReturnAllUsers() {
+    
+  }
 }
