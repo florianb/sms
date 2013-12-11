@@ -17,7 +17,11 @@ public class SMSTest
    * @return Die Id der neuen Nachricht
    */  
   //public Long createMessage(String userName, String message, String topic)
-      
+  public void testCreateOneMessage() {
+    
+  }
+  
+  
   /**
    * Eine Nachricht als Antwort auf eine existierende Ursprungs-Nachricht. 
    * Die Nachricht ist automatisch dem Topic des Vorgängers zugeordnet.
