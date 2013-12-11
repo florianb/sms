@@ -1,5 +1,6 @@
 package de.htw_berlin.f4.ai.kbe.kurznachrichten;
 
+import java.util.HashMap;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +12,7 @@ public class SMS
   
   
   protected int getMessageCount() {
-    return messageMap.size;
+    return messageMap.size();
   }
   
   /**
