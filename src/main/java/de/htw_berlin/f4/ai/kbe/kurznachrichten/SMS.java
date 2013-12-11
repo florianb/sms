@@ -7,6 +7,13 @@ import java.util.Set;
 public class SMS
   implements ShortMessageService
 {
+  private HashMap<Long, Message> messageMap;
+  
+  
+  protected int getMessageCount() {
+    return messageMap.size;
+  }
+  
   /**
    * Erzeuge eine neue Ursprungsnachricht. Eine Nachricht ist einem Topic zugeordnet.
    * Erstelle ein Anlegedatum zu der Nachricht. 
