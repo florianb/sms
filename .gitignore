@@ -37,6 +37,4 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-target/surefire-reports/TEST-de.htw_berlin.f4.ai.kbe.kurznachrichten.AppTest.xml
-
-target/surefire-reports/de.htw_berlin.f4.ai.kbe.kurznachrichten.AppTest.txt
+target/surefire-reports/*
