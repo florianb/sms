@@ -1,18 +1,29 @@
 package de.htw_berlin.f4.ai.kbe.kurznachrichten;
 
+import java.util.HashSet;
 import java.util.HashMap;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 public class SMS
   implements ShortMessageService
 {
-  private HashMap<Long, Message> messageMap;
+  private HashMap<Long, Message> origins;
+  private HashMap<String, User> users;
+  private HashSet<String> topics;
   
+  private Long messageIDCounter, userIDCounter;
+  
+  public SMS() {
+    origins = new HashMap();
+    topics = new HashSet();
+    users = new HashMap();
+    userIDCounter = 0l;
+    messageIDCounter = 0l;
+  }
   
   protected int getMessageCount() {
-    return messageMap.size();
+    return origins.size();
   }
   
   /**
@@ -29,7 +40,21 @@ public class SMS
    */  
   public Long createMessage(String userName, String message, String topic)
   {
-    return null;
+    if (userName == null || message == null || topic == null)
+      throw new NullPointerException();
+    if (message.length() < 10 || message.length() > 255)
+      throw new IllegalArgumentException();
+    if (!getTopics().contains(topic))
+      throw new IllegalArgumentException();
+    if (!userExists(userName))
+      throw new IllegalArgumentException();
+    
+    Long newMessageID = messageIDCounter++;
+    Long userID = users.get(userName).getID();
+    
+    origins.put(newMessageID, new Message(newMessageID, userID, message, topic));
+    
+    return newMessageID;
   }
   
   /**
@@ -48,9 +73,27 @@ public class SMS
    * @param predecessor Die Id der Vorgänger-Nachricht.
    * @return Die Id der neuen Nachricht
    */
-  public Long respondToMessage(String userName, String message, Long predecessor)
+  public Long respondToMessage(String userName, String message, Long predecessorID)
   {
-    return null;
+    if (userName == null || message == null || predecessorID == null)
+      throw new NullPointerException();
+    if (message.length() < 10 || message.length() > 255)
+      throw new IllegalArgumentException();
+    if (!messageExists(predecessorID))
+      throw new IllegalArgumentException();
+    if (!userExists(userName))
+      throw new IllegalArgumentException();
+    
+    Message predecessor = origins.get(predecessorID);
+    
+    if (!predecessor.isOrigin())
+      throw new IllegalArgumentException();
+    
+    Long newMessageID = createMessage(userName, message, predecessor.getTopic());
+    Message newMessage = origins.get(newMessageID);
+    origins.get(predecessor).addResponse(newMessage);
+    
+    return newMessageID;
   }
   
 
@@ -70,7 +113,19 @@ public class SMS
   public void deleteMessage(String userName, Long messageId)
     throws AuthorizationException
   {
+    if (userName == null || messageId == null)
+      throw new NullPointerException();
+    if (!messageExists(messageId))
+      throw new IllegalArgumentException();
+    if (!userExists(userName))
+      throw new IllegalArgumentException();
     
+    Message message = origins.get(messageId);
+    
+    if (!message.isOrigin())
+      throw new IllegalArgumentException();
+    
+    origins.remove(messageId);
   }
 
   
@@ -86,7 +141,16 @@ public class SMS
    */
   public void createTopic(String userName, String topic)
   {
+    if (userName == null || topic == null)
+      throw new NullPointerException();
+    if (topics.contains(topic))
+      throw new IllegalArgumentException();
+    if (topic.length() < 2 || topic.length() > 70)
+      throw new IllegalArgumentException();
+    if (!userExists(userName))
+      throw new IllegalArgumentException();
     
+    topics.add(topic);
   }
   
 
@@ -96,9 +160,11 @@ public class SMS
    * @return alle Bezeichner der Topics. Wenn es keine Topics gibt, soll eine leere Menge 
    * zurückgegeben werden (nicht null).
    */
-  public Set<String> getTopics()
+  public HashSet<String> getTopics()
   {
-    return null;
+    HashSet<String> result = new HashSet(topics);
+    
+    return result;
   }
   
   
@@ -133,7 +199,14 @@ public class SMS
    */
   public void createUser(String userName, String city)
   {
+    if (userName == null || city == null)
+      throw new NullPointerException();
+    if (userName.length() < 4 || userName.length() > 30)
+      throw new IllegalArgumentException();
+    if (!userExists(userName))
+      throw new IllegalArgumentException();
     
+    users.put(userName, new User(userIDCounter++, userName, city));
   }
   
   
@@ -144,7 +217,10 @@ public class SMS
    */
   public void deleteUser(String userName)
   {
+    if (!userExists(userName))
+      throw new IllegalArgumentException();
     
+    users.remove(userName);
   }
   
   
@@ -153,8 +229,20 @@ public class SMS
    * 
    * @return Menge aller Nutzer
    */
-  public Set<User> getUsers()
+  public HashSet<User> getUsers()
   {
-    return null;
+    HashSet<User> result = new HashSet<User>(users.values());
+    
+    return result;
+  }
+  
+  public boolean userExists(String userName)
+  {
+    return users.containsKey(userName);
+  }
+  
+  public boolean messageExists(Long messageID)
+  {
+    return origins.containsKey(messageID);
   }
 }

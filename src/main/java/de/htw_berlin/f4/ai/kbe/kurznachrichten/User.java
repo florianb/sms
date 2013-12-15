@@ -4,7 +4,14 @@ public class User {
 
 	private String name;
 	private String city;
+  private Long id;
 	
+  public User(Long newID, String newName, String newCity) {
+    name = newName;
+    city = newCity;
+    id = newID;
+  }
+  
 	public String getName() {
 		return name;
 	}
@@ -18,4 +25,7 @@ public class User {
 		this.city = city;
 	}
 	
+  public Long getID() {
+    return id;
+  }
 }

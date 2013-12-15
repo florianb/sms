@@ -1,10 +1,2 @@
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSCreateUser.java
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSCreateMessage.java
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSDeleteMessage.java
+/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSTest.java
 /Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/AppTest.java
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSGetTopics.java
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSRespondToMessage.java
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSDeleteUser.java
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSCreateTopic.java
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSGetUsers.java
-/Users/florianbreisch/github/sms/src/test/java/de/htw_berlin/f4/ai/kbe/kurznachrichten/SMSGetMessageByTopic.java
